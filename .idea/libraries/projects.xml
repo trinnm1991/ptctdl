@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="projects">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Visualization.jar!/" />
+      <root url="jar://$PROJECT_DIR$/vis.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

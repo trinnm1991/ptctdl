@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="vis">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/classes/tmp/vis.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
