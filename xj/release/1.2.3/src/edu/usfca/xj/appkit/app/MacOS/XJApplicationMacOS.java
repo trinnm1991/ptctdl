@@ -29,7 +29,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-package edu.usfca.xj.appkit.app.MacOS;
+/*package edu.usfca.xj.appkit.app.MacOS;
 
 import com.apple.eawt.Application;
 import com.apple.eawt.ApplicationEvent;
@@ -129,3 +129,4 @@ public class XJApplicationMacOS extends XJApplication implements XJMenuBarDelega
     }
 
 }
+*/

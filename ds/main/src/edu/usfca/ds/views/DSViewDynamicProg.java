@@ -9,7 +9,7 @@ import edu.usfca.ds.shapes.DSShapeRect;
 
 import java.awt.*;
 
-import com.sun.corba.se.internal.core.GIOPVersion;
+// import com.sun.corba.se.internal.core.GIOPVersion;
 
 
 public class DSViewDynamicProg extends DSView {
