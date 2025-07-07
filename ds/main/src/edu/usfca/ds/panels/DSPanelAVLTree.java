@@ -41,7 +41,7 @@ public class DSPanelAVLTree extends DSPanel {
         });
         box.add(insertfield);
 
-        insertButton = new JButton("Insert");
+        insertButton = new JButton("Thêm nút");
         insertButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 if (insertfield.getText().length() != 0) {
@@ -69,7 +69,7 @@ public class DSPanelAVLTree extends DSPanel {
         });
         box.add(findfield);
 
-        findButton = new JButton("Find");
+        findButton = new JButton("Tìm nút");
         findButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 if (findfield.getText().length() != 0) {
@@ -96,7 +96,7 @@ public class DSPanelAVLTree extends DSPanel {
         });
         box.add(deletefield);
 
-        deleteButton = new JButton("Delete");
+        deleteButton = new JButton("Xóa nút");
         deleteButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 if (deletefield.getText().length() != 0) {
@@ -108,19 +108,19 @@ public class DSPanelAVLTree extends DSPanel {
         });
         box.add(deleteButton);
 
-        swapViewButton = new JButton("Hide Heights");
+        swapViewButton = new JButton("Ẩn chiều cao");
         swapViewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 if (viewingNPL) {
                     Animate(AVLView.HIDE_HEIGHT);
                     viewingNPL = false;
-                    swapViewButton.setText("Show Heights");
+                    swapViewButton.setText("Hiển thị chiều cao");
 
 
                 }   else {
                     Animate(AVLView.SHOW_HEIGHT);
                     viewingNPL = true;
-                    swapViewButton.setText("Hide Heights");
+                    swapViewButton.setText("Ẩn chiều cao");
 
                 }
 

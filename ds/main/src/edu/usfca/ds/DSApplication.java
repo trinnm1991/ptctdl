@@ -10,15 +10,26 @@ import edu.usfca.xj.appkit.utils.XJAlert;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class DSApplication extends XJApplicationDelegate {
-
+    private static final String appTitle = "Mô phỏng cây nhị phân cân bằng - AVL";
     public static void main(String[] args) {
-        XJApplication.run(new DSApplication(), args, "Visualization");
+        XJApplication.run(new DSApplication(), args, appTitle);
+    }
+
+    public static void test() {
+        try {
+            ResourceBundle rb = ResourceBundle.getBundle("edu.usfca.ds.properties.strings");
+            System.out.println("New: " + XJLocalizable.getXJString("New"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void appDidLaunch(String[] args) {
 
+        test();
         XJApplication.setPropertiesPath("edu/usfca/ds/properties/");
         XJApplication.addDocumentType(
                 DSDocument.class, DSWindow.class, XJDataXML.class,

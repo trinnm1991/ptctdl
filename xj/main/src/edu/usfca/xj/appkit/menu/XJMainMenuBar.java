@@ -44,6 +44,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class XJMainMenuBar implements XJMenuItemDelegate {
 
@@ -249,12 +250,13 @@ public class XJMainMenuBar implements XJMenuItemDelegate {
         addMenu(createFileMenu());
         addMenu(createEditMenu());
 
+
+        //addMenu(createWindowMenu());
+        addMenu(createHelpMenu());
         // Customization between menu Edit and menu Help
         if(customizer != null)
             customizer.customizeMenuBar(this);
 
-        addMenu(createWindowMenu());
-        addMenu(createHelpMenu());
     }
 
     public XJMenu createFileMenu() {
@@ -372,7 +374,7 @@ public class XJMainMenuBar implements XJMenuItemDelegate {
         while(iterator.hasNext()) {
             XJWindow window = (XJWindow)iterator.next();
             if(window.shouldAppearsInWindowMenu()) {
-                XJMenuItemCheck item = buildMenuItemCheck("window.getTitle1()", count<10?KeyEvent.VK_0+count:-1, MI_WINDOW+count);
+              XJMenuItemCheck item = buildMenuItemCheck(window.getTitle(), count<10?KeyEvent.VK_0+count:-1, MI_WINDOW+count);
                 item.setSelected(window.isActive());
                 menuWindow.addItem(item);
                 count++;

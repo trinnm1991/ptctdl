@@ -216,7 +216,7 @@ public class DSViewAVLTree extends DSView {
 
         rotateLink1 = getLink(A.display, B.display);
         rotateLink1.setColor(Color.RED);
-        rotatelabel = createLabel("Single Rotate Left", 500, 10);
+        rotatelabel = createLabel("Quay trái đơn.", 500, 10);
         rotatelabel.setLabelColor(Color.RED);
         repaintwait();
         rotateLink1.setColor(Color.BLACK);
@@ -249,7 +249,7 @@ public class DSViewAVLTree extends DSView {
     }
 
     protected AVLNode singleRotateRight(AVLNode tree) {
-        System.out.println("Single Rotate Right");
+        System.out.println("Quay phải đơn.");
         AVLNode parent = tree.parent;
         AVLNode B = tree;
         AVLNode A = B.left;
@@ -268,7 +268,7 @@ public class DSViewAVLTree extends DSView {
 
         rotateLink1 = getLink(B.display, A.display);
         rotateLink1.setColor(Color.RED);
-        rotatelabel = createLabel("Single Rotate Right", 500, 10);
+        rotatelabel = createLabel("Quay phải đơn.", 500, 10);
         rotatelabel.setLabelColor(Color.RED);
         repaintwait();
         rotatelabel.setColor(Color.BLACK);
@@ -322,7 +322,7 @@ public class DSViewAVLTree extends DSView {
         rotateLink1.setColor(Color.RED);
         rotateLink2 = getLink(C.display, B.display);
         rotateLink2.setColor(Color.RED);
-        rotatelabel = createLabel("Double Rotate Left", 500, 10);
+        rotatelabel = createLabel("Quay trái đôi.", 500, 10);
         rotatelabel.setLabelColor(Color.RED);
         repaintwait();
         rotatelabel.setColor(Color.BLACK);
@@ -377,12 +377,12 @@ public class DSViewAVLTree extends DSView {
         resetHeight(C);
         resetHeight(B);
 
-        System.out.println("Double Rotate Left");
+        System.out.println("Quay trái đôi");
         return B;
     }
 
     protected AVLNode doubleRotateRight(AVLNode tree) {
-        System.out.println("Double Rotate Right");
+        System.out.println("Quay phải đôi.");
         AVLNode C = tree;
         AVLNode A = C.left;
         AVLNode B = A.right;
@@ -397,7 +397,7 @@ public class DSViewAVLTree extends DSView {
         rotateLink1.setColor(Color.RED);
         rotateLink2 = getLink(A.display, B.display);
         rotateLink2.setColor(Color.RED);
-        rotatelabel = createLabel("Double Rotate Right", 500, 10);
+        rotatelabel = createLabel("Quay phải đôi.", 500, 10);
         rotatelabel.setLabelColor(Color.RED);
         repaintwait();
         rotatelabel.setColor(Color.BLACK);
@@ -467,8 +467,8 @@ public class DSViewAVLTree extends DSView {
 
         try {
             int x = Integer.parseInt(s);
-            if (x >= 0) {
-                return toString(x, 4);
+            if (x >= 0 && x< 10) {
+                return toString(x, 2);
             } else {
                 return s;
 
@@ -568,7 +568,7 @@ public class DSViewAVLTree extends DSView {
 
 
     public void delete(String removeitem) {
-        GElement Deletelabel = createLabel("Deleting:", 100, 40, false);
+        GElement Deletelabel = createLabel("Đang xóa:", 100, 40, false);
         elementLabel = createLabel(String.valueOf(removeitem), 170, 40, false);
         elementLabel.setLabelColor(Color.RED);
         root = delete(removeitem, root);
@@ -778,17 +778,22 @@ public class DSViewAVLTree extends DSView {
 
 
     public void find(String finditem) {
-        GElement findlabel = createLabel("Finding:", 100, 40, false);
+        GElement findlabel = createLabel("Đang tìm kiếm:", 100, 40, false);
         elementLabel = createLabel(String.valueOf(finditem), 170, 40, false);
         elementLabel.setLabelColor(Color.RED);
         GElement found = find(finditem, root);
         if (found != null) {
-            findlabel.setLabel("Found:");
+            findlabel.setLabel("Đã tìm thấy:");
             repaintwait();
-            found.setLabelColor(Color.BLACK);
+            found.setLabelColor(Color.ORANGE);
+            found.setColor(Color.ORANGE);
             elementLabel.setLabelColor(Color.BLACK);
+            new javax.swing.Timer(500, e -> {
+                found.setColor(Color.BLACK);
+                found.setLabelColor(Color.BLACK);
+            }).start();
         } else {
-            findlabel.setLabel("Not Found:");
+            findlabel.setLabel("Không tìm thấy:");
             findlabel.setColor(Color.BLACK);
             elementLabel.setLabelColor(Color.BLACK);
         }

@@ -81,24 +81,24 @@ public class DSPanel extends JPanel {
 
 
 
-        runningMsg = new JLabel("Animation Completed");
+        runningMsg = new JLabel("Dừng hoạt ảnh");
 
-        pauseButton = new JButton("Pause");
+        pauseButton = new JButton("Tạm dừng");
         pauseButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 if (paused) {
-                    pauseButton.setText("Pause");
+                    pauseButton.setText("Tạm dừng");
                     view.go();
                     paused = false;
                     if (running) {
-                        runningMsg.setText("Animation Running");
+                        runningMsg.setText("Hoạt ảnh đang chạy");
                         runningMsg.setForeground(Color.GREEN);
                     }
                     stepButton.setEnabled(false);
                 } else {
-                    pauseButton.setText("Go");
+                    pauseButton.setText("Bắt đầu");
                     if (running) {
-                        runningMsg.setText("Animation Paused");
+                        runningMsg.setText("Hoạt ảnh đã tạm dừng");
                         runningMsg.setForeground(Color.RED);
                         stepButton.setEnabled(true);
                     }
@@ -114,7 +114,7 @@ public class DSPanel extends JPanel {
         buttonBox.add(pauseButton);
 
 
-        stepButton = new JButton("Step");
+        stepButton = new JButton("Từng bước");
         stepButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 view.step();
@@ -125,7 +125,7 @@ public class DSPanel extends JPanel {
 
         stepButton.setEnabled(false);
 
-        skipButton = new JButton("Skip");
+        skipButton = new JButton("Bỏ qua");
         skipButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 view.skip();
@@ -141,11 +141,11 @@ public class DSPanel extends JPanel {
         bottombox.add(buttonLabelBox);
 
         speed = new JSlider();
-        speed.setBorder(BorderFactory.createTitledBorder("Animation Speed"));
+        speed.setBorder(BorderFactory.createTitledBorder("Tốc độ hoạt ảnh"));
 
         Hashtable labelTable = new Hashtable();
-        labelTable.put(new Integer(0), new JLabel("Fast"));
-        labelTable.put(new Integer(100), new JLabel("Slow"));
+        labelTable.put(new Integer(0), new JLabel("Nhanh"));
+        labelTable.put(new Integer(100), new JLabel("Chậm"));
         speed.setLabelTable(labelTable);
         speed.setInverted(true);
         speed.setPaintLabels(true);
@@ -173,11 +173,11 @@ public class DSPanel extends JPanel {
 
         running = true;
         if (paused) {
-            runningMsg.setText("Animation Paused");
+            runningMsg.setText("Hoạt ảnh đã tạm dừng");
             runningMsg.setForeground(Color.RED);
             stepButton.setEnabled(true);
         } else {
-            runningMsg.setText("Animation Running");
+            runningMsg.setText("Hoạt ảnh đang chạy");
             runningMsg.setForeground(Color.GREEN);
             stepButton.setEnabled(false);
         }
@@ -214,7 +214,7 @@ public class DSPanel extends JPanel {
     public void EndingAnimation() {
 
         running = false;
-        runningMsg.setText("Animation Completed");
+        runningMsg.setText("Hoạt ảnh đã hoàn tất.");
         runningMsg.setForeground(Color.BLACK);
         stepButton.setEnabled(false);
         skipButton.setEnabled(false);

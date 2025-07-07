@@ -2,12 +2,10 @@ package edu.usfca.ds;
 
 import edu.usfca.ds.panels.*;
 import edu.usfca.xj.appkit.frame.XJWindow;
-import edu.usfca.xj.appkit.menu.XJMainMenuBar;
-import edu.usfca.xj.appkit.menu.XJMenu;
-import edu.usfca.xj.appkit.menu.XJMenuItem;
-import edu.usfca.xj.appkit.menu.XJMenuItemDelegate;
+import edu.usfca.xj.appkit.menu.*;
 import edu.usfca.xj.appkit.utils.XJAlert;
 import edu.usfca.xj.appkit.utils.XJFileChooser;
+import edu.usfca.xj.appkit.utils.XJLocalizable;
 import edu.usfca.xj.foundation.XJUtils;
 
 import javax.imageio.ImageIO;
@@ -17,6 +15,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class DSWindow extends XJWindow implements XJMenuItemDelegate {
@@ -63,57 +62,10 @@ public class DSWindow extends XJWindow implements XJMenuItemDelegate {
         viewTabbedPane = new JTabbedPane();
         viewTabbedPane.setTabPlacement(JTabbedPane.TOP);
 
-        stackPanel = new DSPanelStackArray(this);
-
-        stackPanel = new DSPanelStackArray(this);
-        stackPanelLL = new DSPanelStackLL(this);
-        queuePanel = new DSPanelQueueArray(this);
-        queuePanelLL = new DSPanelQueueLL(this);
-
-        listPanel = new DSPanelListArray(this);
-         listPanel2 = new DSPanelListLL(this);
-
-        BSTPanel = new DSPanelBST(this);
         AVLPanel = new DSPanelAVLTree(this);
-        BTreePanel2 = new DSPanelBTree2(this);
-        BTreePanel = new DSPanelBTree(this);
 
 
-        heapPanel = new DSPanelHeap(this);
-        BinomialQueuePanel = new DSPanelBinomialQueue(this);
-
-        sortPanel = new DSPanelSort(this);
-         bucketPanel = new DSPanelBucketSort(this);
-         countSortPanel = new DSPanelCountSort(this);
-         radixSortPanel = new DSPanelRadixSort(this);
-         heapsortPanel = new DSPanelHeapSort(this);
-
-         hashOpenPanel = new DSPanelHashOpen(this);
-         hashClosedPanel = new DSPanelHashClosed(this);
-
-         huffPanel = new DSPanelHuff(this);
-
-
-         topoPanel = new DSPanelTopological(this);
-         bfsPanel = new DSPanelBFS(this);
-         dfsPanel = new DSPanelDFS(this);
-         dijkstraPanel = new DSPanelDijkstra(this);
-        FloydPanel = new DSPanelFloyd(this);
-        kruskalPanel = new DSPanelKruskal(this);
-         primPanel = new DSPanelPrim(this);
-
-         ccPanel = new DSPanelCC(this);
-
-        DynamicProgPanel = new DSPanelDynamicProg(this);
-        DynamicProgPanel2 = new DSPanelDynamicProg2(this);
-
-        viewTabbedPane.add("Stack-Array", stackPanel);
-        viewTabbedPane.add("Stack-Linked List", stackPanelLL );
-        viewTabbedPane.add("Queue-Array", queuePanel);
-        viewTabbedPane.add("Queue-Linked List", queuePanelLL );
-        viewTabbedPane.add("List-Array", listPanel);
-        viewTabbedPane.add("List-Linked List", listPanel2);
-
+        viewTabbedPane.add("Cây tìm kiếm nhị phân cân bằng - AVL", AVLPanel);
 
         getContentPane().add(viewTabbedPane);
         pack();
@@ -138,50 +90,104 @@ public class DSWindow extends XJWindow implements XJMenuItemDelegate {
     public static final int MI_ALGORITHMS_HEAPS = 206;
     public static final int MI_ALGORITHMS_HUFFMAN = 207;
 
+    private static final String VI_FILE = "Tệp";
+    private static final String VI_EDIT = "Biên tập";
+    private static final String VI_WINDOW = "Thông tin học viên";
+    private static final String VI_HELP = "Trợ giúp";
+    private static final String VI_CHECK_UPDATE = "Kiểm tra cập nhật";
+    private static final String VI_INFO_1 = "Trần Minh Duy - 911224002";
+    private static final int    MI_INFO_1 = 300;
+    private static final String VI_INFO_2 = "Đồng Ngọc Trang - 911224007";
+    private static final int    MI_INFO_2 = 301;
+    private static final String appTitle = "Mô phỏng cây nhị phân cân bằng - AVL";
+
     public void customizeFileMenu(XJMenu menu) {
+        menu.setTitle(VI_FILE);
+        Iterator iter = menu.itemIterator();
+        while (iter.hasNext()) {
+            XJMenuItem item = (XJMenuItem) iter.next();
+            if ("New".equals(item.getTitle())) {
+
+                item.setTitle("Tạo mới");
+                System.out.println("New: " + XJLocalizable.getXJString("New"));
+            }
+            else if ("Close".equals(item.getTitle())) {
+                item.setTitle("Đóng");
+            }
+            else if ("Quit".equals(item.getTitle())) {
+                item.setTitle("Thoát");
+            } else {
+                item.setTitle("Undefined");
+            }
+        }
 
         XJMenu exportMenu = new XJMenu();
-        exportMenu.setTitle("Export");
-        exportMenu.addItem(new XJMenuItem("As EPS...", MI_EXPORT_AS_EPS, this));
-        exportMenu.addItem(new XJMenuItem("As Bitmap Image...", MI_EXPORT_AS_IMAGE, this));
+        exportMenu.setTitle("Xuất tệp");
+        exportMenu.addItem(new XJMenuItem("định dạng EPS...", MI_EXPORT_AS_EPS, this));
+        exportMenu.addItem(new XJMenuItem("định dạng Bitmap Image...", MI_EXPORT_AS_IMAGE, this));
 
         menu.insertItemAfter(exportMenu, XJMainMenuBar.MI_CLOSE);
         menu.insertSeparatorAfter(XJMainMenuBar.MI_CLOSE);
-
-        XJMenu algorithmMenu = new XJMenu();
-        algorithmMenu.setTitle("Algorithms");
-        algorithmMenu.addItem(new XJMenuItem("Lists/Stacks/Queues",MI_ALGORITHMS_LIST,this));
-        algorithmMenu.addItem(new XJMenuItem("Sorting Algorithms",MI_ALGORITHMS_SORT,this));
-        algorithmMenu.addItem(new XJMenuItem("Trees (BST/AVL/B-Trees)",MI_ALGORITHMS_TREES,this));
-        algorithmMenu.addItem(new XJMenuItem("Heaps / Binomial Queues",MI_ALGORITHMS_HEAPS,this));
-        algorithmMenu.addItem(new XJMenuItem("Graph Algorithms",MI_ALGORITHMS_GRAPH,this));
-        algorithmMenu.addItem(new XJMenuItem("Hashing",MI_ALGORITHMS_HASHING,this));
-        algorithmMenu.addItem(new XJMenuItem("Huffman Coding",MI_ALGORITHMS_HUFFMAN,this));
-        algorithmMenu.addItem(new XJMenuItem("Dynamic Programming",MI_ALGORITHMS_DYNAMIC,this));
-
-
     }
 
     public void customizeMenuBar(XJMainMenuBar menubar) {
         XJMenu menu = new XJMenu();
-        menu.setTitle("Algorithms");
-        menu.addItem(new XJMenuItem("Lists/Stacks/Queues", KeyEvent.VK_1,  MI_ALGORITHMS_LIST, this));
-        menu.addItem(new XJMenuItem("Sorting Algortihms", KeyEvent.VK_2,  MI_ALGORITHMS_SORT, this));
-        menu.addItem(new XJMenuItem("Trees (BST/AVL/B-Tree)", KeyEvent.VK_3,  MI_ALGORITHMS_TREES, this));
-        menu.addItem(new XJMenuItem("Heaps / Binomial Queues", KeyEvent.VK_4,  MI_ALGORITHMS_HEAPS, this));
-        menu.addItem(new XJMenuItem("Graph Algortihms", KeyEvent.VK_5,  MI_ALGORITHMS_GRAPH, this));
-        menu.addItem(new XJMenuItem("Hashing", KeyEvent.VK_6,  MI_ALGORITHMS_HASHING, this));
-        menu.addItem(new XJMenuItem("Huffman Coding", KeyEvent.VK_7,  MI_ALGORITHMS_HUFFMAN, this));
-        menu.addItem(new XJMenuItem("Dynamic Programming", KeyEvent.VK_8,  MI_ALGORITHMS_DYNAMIC, this));
-    // This line adds a menu separator
-    //menu.addSeparator();
+        menu.setTitle(VI_WINDOW);
+        menu.setTag(303);
+
+        menu.addItem(new XJMenuItem(appTitle, 304, this));
+        menu.addSeparator();
+        menu.addItem(new XJMenuItemCheck(VI_INFO_1, MI_INFO_1, this, true  ));
+        menu.addItem(new XJMenuItemCheck(VI_INFO_2, MI_INFO_2, this, true  ));
 
         menubar.addCustomMenu(menu);
+
+    }
+
+    public void customizeWindowMenu(XJMenu menu) {
+
+    }
+
+    public void customizeEditMenu(XJMenu menu) {
+        menu.setTitle(VI_EDIT);
+
+        Iterator iter = menu.itemIterator();
+        while (iter.hasNext()) {
+            XJMenuItem item = (XJMenuItem) iter.next();
+            if ("Cut".equals(item.getTitle())) {
+                item.setTitle("Cắt");
+            }
+            else if ("Undo".equals(item.getTitle())) {
+                item.setTitle("Hoàn tác");
+            }
+            else if ("Redo".equals(item.getTitle())) {
+                item.setTitle("Làm lại");
+            } else if ("Copy".equals(item.getTitle())) {
+                item.setTitle("Sao chép");
+            } else if ("Paste".equals(item.getTitle())) {
+                item.setTitle("Dán");
+            } else if ("Select All".equals(item.getTitle())) {
+                item.setTitle("Chọn tất cả");
+            }else {
+                item.setTitle("Undefined");
+            }
+        }
     }
 
     public void customizeHelpMenu(XJMenu menu) {
-        menu.insertItemAfter(new XJMenuItem("Check for Updates", MI_CHECK_UPDATES, this), XJMainMenuBar.MI_HELP);
+        menu.setTitle(VI_HELP);
+        menu.insertItemAfter(new XJMenuItem(VI_CHECK_UPDATE, MI_CHECK_UPDATES, this), XJMainMenuBar.MI_HELP);
         menu.insertSeparatorAfter(XJMainMenuBar.MI_HELP);
+
+        Iterator iter = menu.itemIterator();
+        while (iter.hasNext()) {
+            XJMenuItem item = (XJMenuItem) iter.next();
+            if ("Help".equals(item.getTitle())) {
+                item.setTitle("Trợ giúp");
+            } else if ("About".equals(item.getTitle())) {
+                item.setTitle("Giới thiệu");
+            }
+        }
     }
 
     public void handleMenuEvent(XJMenu menu, XJMenuItem item) {
