@@ -18,18 +18,8 @@ public class DSApplication extends XJApplicationDelegate {
         XJApplication.run(new DSApplication(), args, appTitle);
     }
 
-    public static void test() {
-        try {
-            ResourceBundle rb = ResourceBundle.getBundle("edu.usfca.ds.properties.strings");
-            System.out.println("New: " + XJLocalizable.getXJString("New"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public void appDidLaunch(String[] args) {
 
-        test();
         XJApplication.setPropertiesPath("edu/usfca/ds/properties/");
         XJApplication.addDocumentType(
                 DSDocument.class, DSWindow.class, XJDataXML.class,

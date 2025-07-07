@@ -109,7 +109,6 @@ public class DSWindow extends XJWindow implements XJMenuItemDelegate {
             if ("New".equals(item.getTitle())) {
 
                 item.setTitle("Tạo mới");
-                System.out.println("New: " + XJLocalizable.getXJString("New"));
             }
             else if ("Close".equals(item.getTitle())) {
                 item.setTitle("Đóng");
