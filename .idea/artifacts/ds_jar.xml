@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact name="ds:jar">
+    <output-path>$PROJECT_DIR$/classes/out/artifacts/ds_jar</output-path>
+    <root id="root">
+      <element id="archive" name="AVLVisualization.jar">
+        <element id="module-output" name="ds" />
+        <element id="module-output" name="1.2.6" />
+        <element id="module-output" name="1.2.2" />
+        <element id="module-output" name="1.2.3" />
+        <element id="module-output" name="1.2.5" />
+        <element id="module-output" name="1.2.4" />
+        <element id="module-output" name="main" />
+      </element>
+      <element id="library" level="project" name="jgoodies4" />
+      <element id="library" level="project" name="visualization" />
+      <element id="library" level="project" name="jgoodies2" />
+      <element id="library" level="project" name="jgoodies5" />
+      <element id="library" level="project" name="jgoodies3" />
+      <element id="library" level="project" name="jgoodies" />
+      <element id="library" level="project" name="vis" />
+    </root>
+  </artifact>
+</component>
