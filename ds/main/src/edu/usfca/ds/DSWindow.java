@@ -64,8 +64,8 @@ public class DSWindow extends XJWindow implements XJMenuItemDelegate {
 
         BTreePanel = new DSPanelBTree(this);
 
-
-        viewTabbedPane.add("Mô phỏng cây tìm kiếm cân bằng B-Tree", BTreePanel);
+        viewTabbedPane.add("Mô phỏng cây tìm kiếm cân bằng B-Tree (Proactive Split/Merge)", BTreePanel);
+        //viewTabbedPane.add("Mô phỏng cây tìm kiếm cân bằng B-Tree", BTreePanel);
 
         getContentPane().add(viewTabbedPane);
         pack();

@@ -304,8 +304,8 @@ public class DSViewBTree extends DSView {
 
         try {
             int x = Integer.parseInt(s);
-            if (x >= 0 && x <10) {
-                return toString(x, 2);
+            if (x >= 0) {
+                return toString(x, 3);
             } else {
                 return s;
 
