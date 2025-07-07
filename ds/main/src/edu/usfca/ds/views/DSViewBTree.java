@@ -64,7 +64,7 @@ public class DSViewBTree extends DSView {
             root.numkeys = 1;
             root.keys[0] = insertElem;
         } else {
-            GElementLabel insertcaption = createLabel("Inserting: ", 100, 40);
+            GElementLabel insertcaption = createLabel("Đang chèn vào: ", 100, 40);
             InsertLabel = createLabel(insertElem, -10, -10);
             LineupHorizontal(insertcaption, InsertLabel);
             insert_preemptive(insertElem, root);
@@ -304,8 +304,8 @@ public class DSViewBTree extends DSView {
 
         try {
             int x = Integer.parseInt(s);
-            if (x >= 0) {
-                return toString(x, 3);
+            if (x >= 0 && x <10) {
+                return toString(x, 2);
             } else {
                 return s;
 
@@ -420,7 +420,7 @@ public class DSViewBTree extends DSView {
 
     public void delete(String removeitem) {
 
-        GElementLabel deletecaption = createLabel("Deleting: ", 100, 40);
+        GElementLabel deletecaption = createLabel("Đang xóa: ", 100, 40);
         GElementLabel deleteLabel = createLabel(removeitem, -10, -10);
         LineupHorizontal(deletecaption, deleteLabel);
 
@@ -696,11 +696,11 @@ public class DSViewBTree extends DSView {
                 newroot.display.setWidth(WIDTHS[newroot.numkeys]);
                 resetEdges(newroot);
             } else {
-                System.out.println("Didn't find it!");
+                System.out.println("Không tìm thấy!");
                 if (i >= newroot.numkeys) {
-                    System.out.println("Went past end!");
+                    System.out.println("Đã vượt quá giới hạn của nút!");
                 } else {
-                    System.out.println("Comparing "+ newroot.keys[i] + " and " +removeitem);
+                    System.out.println("So sánh "+ newroot.keys[i] + " và " +removeitem);
                 }
             }
             newroot.display.setColor(Color.BLACK);
@@ -883,17 +883,21 @@ public class DSViewBTree extends DSView {
 
     public void find(String finditem) {
 
-        GElement findlabel = createLabel("Finding:", 100, 40, false);
+        GElement findlabel = createLabel("Đang tìm kiếm:", 100, 40, false);
         elementLabel = createLabel(String.valueOf(finditem), 170, 40, false);
         elementLabel.setLabelColor(Color.RED);
         GElement found = find(finditem, root);
         if (found != null) {
-            findlabel.setLabel("Found:");
+            findlabel.setLabel("Đã tìm thấy:");
             repaintwait();
-            found.setLabelColor(Color.BLACK);
+            found.setLabelColor(Color.ORANGE);
             elementLabel.setLabelColor(Color.BLACK);
+            new javax.swing.Timer(500, e -> {
+                found.setColor(Color.BLACK);
+                found.setLabelColor(Color.BLACK);
+            }).start();
         } else {
-            findlabel.setLabel("Not Found:");
+            findlabel.setLabel("Không tìm thấy:");
             findlabel.setColor(Color.BLACK);
             elementLabel.setLabelColor(Color.BLACK);
         }

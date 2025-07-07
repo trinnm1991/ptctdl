@@ -62,10 +62,10 @@ public class DSWindow extends XJWindow implements XJMenuItemDelegate {
         viewTabbedPane = new JTabbedPane();
         viewTabbedPane.setTabPlacement(JTabbedPane.TOP);
 
-        AVLPanel = new DSPanelAVLTree(this);
+        BTreePanel = new DSPanelBTree(this);
 
 
-        viewTabbedPane.add("Cây tìm kiếm nhị phân cân bằng - AVL", AVLPanel);
+        viewTabbedPane.add("Mô phỏng cây tìm kiếm cân bằng B-Tree", BTreePanel);
 
         getContentPane().add(viewTabbedPane);
         pack();
@@ -95,11 +95,11 @@ public class DSWindow extends XJWindow implements XJMenuItemDelegate {
     private static final String VI_WINDOW = "Thông tin học viên";
     private static final String VI_HELP = "Trợ giúp";
     private static final String VI_CHECK_UPDATE = "Kiểm tra cập nhật";
-    private static final String VI_INFO_1 = "Trần Minh Duy - 911224002";
+    private static final String VI_INFO_1 = "Hồ Xuân Dàng - 911224001";
     private static final int    MI_INFO_1 = 300;
-    private static final String VI_INFO_2 = "Đồng Ngọc Trang - 911224007";
+    private static final String VI_INFO_2 = "Nguyễn Nhật Minh Trí - 911224004";
     private static final int    MI_INFO_2 = 301;
-    private static final String appTitle = "Mô phỏng cây nhị phân cân bằng - AVL";
+    private static final String appTitle = "Mô phỏng cây tìm kiếm cân bằng B-Tree";
 
     public void customizeFileMenu(XJMenu menu) {
         menu.setTitle(VI_FILE);

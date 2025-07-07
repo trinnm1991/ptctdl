@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.ResourceBundle;
 
 public class DSApplication extends XJApplicationDelegate {
-    private static final String appTitle = "Mô phỏng cây nhị phân cân bằng - AVL";
+    private static final String appTitle = "Mô phỏng cây tìm kiếm cân bằng B-Tree";
     public static void main(String[] args) {
         XJApplication.run(new DSApplication(), args, appTitle);
     }

@@ -25,7 +25,7 @@ public class DSPanelBTree extends DSPanel {
 
 
         insertfield = new JTextField("");
-        insertfield.setMaximumSize(new Dimension(40, 30));
+        insertfield.setMaximumSize(new Dimension(80, 30));
         insertfield.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 if (insertfield.getText().length() != 0) {
@@ -37,7 +37,7 @@ public class DSPanelBTree extends DSPanel {
         });
         box.add(insertfield);
 
-        insertButton = new JButton("Insert");
+        insertButton = new JButton("Thêm nút");
         insertButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 if (insertfield.getText().length() != 0) {
@@ -52,7 +52,7 @@ public class DSPanelBTree extends DSPanel {
 
 
         findfield = new JTextField("");
-        findfield.setMaximumSize(new Dimension(40, 30));
+        findfield.setMaximumSize(new Dimension(80, 30));
         findfield.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 if (findfield.getText().length() != 0) {
@@ -65,7 +65,7 @@ public class DSPanelBTree extends DSPanel {
         });
         box.add(findfield);
 
-        findButton = new JButton("Find");
+        findButton = new JButton("Tìm nút");
         findButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 if (findfield.getText().length() != 0) {
@@ -80,7 +80,7 @@ public class DSPanelBTree extends DSPanel {
 
 
         deletefield = new JTextField("");
-        deletefield.setMaximumSize(new Dimension(40, 30));
+        deletefield.setMaximumSize(new Dimension(80, 30));
         deletefield.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 if (deletefield.getText().length() != 0) {
@@ -92,7 +92,7 @@ public class DSPanelBTree extends DSPanel {
         });
         box.add(deletefield);
 
-        deleteButton = new JButton("Delete");
+        deleteButton = new JButton("Xóa nút");
         deleteButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 if (deletefield.getText().length() != 0) {
